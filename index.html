@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Premium Promise Day 💖</title>
+
+<style>
+*{margin:0;padding:0;box-sizing:border-box;font-family:'Segoe UI',sans-serif;}
+body{overflow:hidden;text-align:center;color:white;}
+.page{
+position:absolute;
+width:100%;
+height:100vh;
+display:none;
+flex-direction:column;
+justify-content:center;
+align-items:center;
+padding:20px;
+}
+.page.active{display:flex;}
+
+#page1{background:linear-gradient(135deg,#ff758c,#ff7eb3,#ffb199);}
+#page2{background:linear-gradient(135deg,#a18cd1,#fbc2eb,#ff9a9e);}
+#page3{background:linear-gradient(135deg,#ff6a88,#ff99ac,#ffd1ff);}
+#page4{background:linear-gradient(135deg,#c471f5,#fa71cd,#ff9a9e);}
+#finalPage{background:linear-gradient(135deg,#ff9a9e,#fecfef,#fad0c4);}
+
+.gif{
+width:240px;
+border-radius:20px;
+box-shadow:0 15px 40px rgba(0,0,0,0.4);
+margin-bottom:20px;
+}
+
+.glow{
+font-size:28px;
+font-weight:bold;
+animation:glow 2s infinite alternate;
+}
+@keyframes glow{
+from{text-shadow:0 0 10px #fff,0 0 20px #ff1493;}
+to{text-shadow:0 0 30px #fff,0 0 60px #ff69b4;}
+}
+
+button{
+padding:12px 25px;
+border:none;
+border-radius:30px;
+margin:10px;
+font-weight:bold;
+cursor:pointer;
+transition:0.3s;
+}
+
+.yes{background:white;color:#ff1493;}
+.yes:hover{transform:scale(1.1);}
+.no{background:black;color:white;position:relative;}
+
+.letter{
+width:90%;
+max-width:380px;
+background:white;
+color:#d63384;
+border-radius:20px;
+padding:18px;
+margin-top:20px;
+display:none;
+box-shadow:0 10px 40px rgba(0,0,0,0.3);
+line-height:1.6;
+font-size:14px;
+}
+
+.big-heart{
+font-size:70px;
+cursor:pointer;
+animation:pulse 1.3s infinite;
+}
+@keyframes pulse{50%{transform:scale(1.2);}}
+
+.close-btn{
+margin-top:20px;
+padding:12px 30px;
+border-radius:40px;
+border:none;
+background:linear-gradient(45deg,#ff1493,#ff69b4);
+color:white;
+font-weight:bold;
+cursor:pointer;
+}
+
+@keyframes fall{to{transform:translateY(110vh);}}
+</style>
+</head>
+
+<body onload="startHearts()">
+
+<div class="page active" id="page1">
+<img src="love.webp" class="gif">
+<h3>Oyee sunn naa? 💕</h3>
+<button class="yes" onclick="showPage('page2')">Yes 💖</button>
+<button class="no" id="no1">Nahi ❌</button>
+</div>
+
+<div class="page" id="page2">
+<img src="tkthao219-bubududu.gif" class="gif">
+<h3>Tere liye kuch special hai... 🥰</h3>
+<button class="yes" onclick="showPage('page3')">Dikhao 👀</button>
+<button class="no" id="no2">Nahi ❌</button>
+</div>
+
+<div class="page" id="page3">
+<img src="dudu-scared-bubu-dudu-kiss.gif" class="gif">
+<h2 class="glow">Happy Promise Day ❤️</h2>
+<button onclick="openLetter()">Open Letter 💌</button>
+
+<div class="letter" id="letterBox">
+💖 I promise to love you more every single day. <br><br>
+🌷 I promise to protect your smile like my treasure. <br><br>
+🫶 I promise to stay beside you in every situation. <br><br>
+🌸 I promise to respect your feelings always. <br><br>
+💌 I promise to listen to you with all my heart. <br><br>
+🌈 I promise to fill your life with colors and happiness. <br><br>
+🤗 I promise to hug you tight whenever you feel low. <br><br>
+✨ I promise to support your dreams like they are mine. <br><br>
+💫 I promise to never let you feel alone. <br><br>
+👑 And most importantly, I promise you my forever.
+</div>
+
+<button onclick="showPage('page4')">Next 💕</button>
+</div>
+
+<div class="page" id="page4">
+<h2 class="glow">Do you want to see a cute and beautiful girl? 💕</h2>
+<p>Click on the heart to reveal 👇</p>
+<div class="big-heart" onclick="showReveal()">❤️</div>
+</div>
+
+<div class="page" id="finalPage">
+<img src="mimi-and-neko-heart.gif" class="gif">
+<h2 class="glow">Open your front camera 📸</h2>
+<p style="max-width:420px; line-height:1.6; font-size:15px;">
+Look carefully... 😍✨ <br><br>
+It’s YOU! <br><br>
+The cutest and most beautiful girl in the whole world 💖
+</p>
+<button class="close-btn" onclick="exitSite()">Close 💌</button>
+</div>
+
+<script>
+function showPage(id){
+document.querySelectorAll(".page").forEach(p=>p.classList.remove("active"));
+document.getElementById(id).classList.add("active");
+}
+
+function showReveal(){
+showPage('finalPage');
+}
+
+function moveButton(btn){
+btn.style.position="absolute";
+btn.style.top=Math.random()*80+"vh";
+btn.style.left=Math.random()*80+"vw";
+}
+document.getElementById("no1").onclick=function(){moveButton(this)};
+document.getElementById("no2").onclick=function(){moveButton(this)};
+
+function openLetter(){
+document.getElementById("letterBox").style.display="block";
+}
+
+function startHearts(){
+setInterval(()=>{
+let heart=document.createElement("div");
+heart.innerHTML="❤️";
+heart.style.position="fixed";
+heart.style.top="-10px";
+heart.style.left=Math.random()*100+"vw";
+heart.style.fontSize=(15+Math.random()*20)+"px";
+heart.style.animation="fall 6s linear";
+document.body.appendChild(heart);
+setTimeout(()=>heart.remove(),6000);
+},500);
+}
+
+function exitSite(){
+window.location.href="about:blank";
+}
+</script>
+
+</body>
+</html>
